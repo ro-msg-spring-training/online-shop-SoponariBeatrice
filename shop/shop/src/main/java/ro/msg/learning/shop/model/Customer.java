@@ -2,6 +2,7 @@ package ro.msg.learning.shop.model;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.Set;
@@ -9,11 +10,16 @@ import java.util.Set;
 @Entity
 @Data
 public class Customer extends BaseEntity{
-    private String firstName;
-    private String lastName;
-    private String username;
-    private String password;
-    private String email;
+    @Column(name = "FIRSTNAME")
+    String firstName;
+    @Column(name = "LASTNAME")
+    String lastName;
+    @Column(name = "USERNAME")
+    String username;
+    @Column(name = "PASSWORD")
+    String password;
+    @Column(name = "EMAIL")
+    String email;
     @OneToMany(mappedBy = "customer")
-    private Set<Order> orders;
+    Set<OrderE> orders;
 }

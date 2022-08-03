@@ -9,6 +9,7 @@ import ro.msg.learning.shop.service.IProductService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/products")

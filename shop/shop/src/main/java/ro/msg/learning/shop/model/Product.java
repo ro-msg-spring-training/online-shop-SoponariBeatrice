@@ -1,9 +1,8 @@
 package ro.msg.learning.shop.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jdk.jfr.Category;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import ro.msg.learning.shop.dto.ProductDto;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -12,7 +11,8 @@ import java.util.Set;
 @Entity
 @Data
 @Table(name="Product")
-@NoArgsConstructor
+@EqualsAndHashCode(exclude = "category")
+@ToString(exclude = {"stocks", "orderDetails"})
 public class Product extends BaseEntity {
     private String name;
     private String description;
