@@ -1,4 +1,4 @@
-package ro.msg.learning.shop;
+package ro.msg.learning.shop.mapper;
 
 import org.springframework.stereotype.Component;
 import ro.msg.learning.shop.dto.ProductCategoryDto;
@@ -10,23 +10,19 @@ import ro.msg.learning.shop.model.Supplier;
 import java.math.BigDecimal;
 
 @Component
-public
-class Mapper {
+public class Mapper {
     public ProductDto toDto(Product product) {
         String name = product.getName();
-        Integer id = product.getId();
+        Integer productId = product.getId();
         Integer categoryId = product.getCategory().getId();
         Integer supplierId = product.getSupplier().getId();
         String description = product.getDescription();
         BigDecimal price = product.getPrice();
         Double weight = product.getWeight();
-        String categoryName = product.getCategory().getName();
-        String categoryDescription = product.getCategory().getDescription();
-        String supplierName = product.getSupplier().getName();
         String imageUrl = product.getImageUrl();
         ProductCategoryDto categoryDto = new ProductCategoryDto(categoryId, product.getCategory().getName(), product.getCategory().getDescription());
         SupplierDto supplierDto = new SupplierDto(supplierId, product.getSupplier().getName());
-        return new ProductDto(id, categoryId, supplierId, name, description, price, weight, categoryDto, supplierDto, imageUrl);
+        return new ProductDto(productId, categoryId, supplierId, name, description, price, weight, categoryDto, supplierDto, imageUrl);
     }
 
     public Product toProduct(ProductDto productDto) {
@@ -35,8 +31,7 @@ class Mapper {
 
         Supplier supplier = new Supplier(productDto.getSupplier().getName());
         supplier.setId(productDto.getSupplier().getId());
-
-        Product product = new Product(productDto.getName(), productDto.getDescription(), productDto.getPrice(), productDto.getWeight(), productCategory, supplier, productDto.getImageUrl());
+        Product product = new Product(productDto, productCategory, supplier);
         product.setId(productDto.getId());
         return product;
     }

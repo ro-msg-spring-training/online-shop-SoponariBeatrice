@@ -5,6 +5,5 @@ import ro.msg.learning.shop.model.ProductCategory;
 import java.util.Optional;
 
 public interface ProductCategoryRepository  extends JpaRepository<ProductCategory, Integer> {
-    Optional<ProductCategory> findById(Integer id);
 
 }

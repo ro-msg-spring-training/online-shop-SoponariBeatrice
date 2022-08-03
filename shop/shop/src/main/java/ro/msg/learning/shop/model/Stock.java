@@ -12,9 +12,9 @@ public class Stock{
     @Column(name = "LOCATIONID")
     private Integer locationid;
     @ManyToOne
-    Product product;
+    private Product product;
     @ManyToOne
-    Location location;
+    private Location location;
 
-    Integer quantity;
+    private Integer quantity;
 }

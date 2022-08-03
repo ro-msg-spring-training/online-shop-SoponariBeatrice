@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Data
 public class Revenue extends BaseEntity{
     @ManyToOne
-    Location locationrevenue;
-    LocalDate date;
-    BigDecimal sum;
+    private Location locationrevenue;
+    private LocalDate date;
+    private BigDecimal sum;
 }

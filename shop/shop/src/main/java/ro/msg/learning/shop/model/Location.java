@@ -9,15 +9,15 @@ import java.util.Set;
 @Data
 @Entity
 public class Location extends BaseEntity{
-    String name;
-    String country;
-    String city;
-    String county;
-    String street;
+    private String name;
+    private String country;
+    private String city;
+    private String county;
+    private String street;
     @OneToMany(mappedBy = "location")
-    Set<Stock> stocks;
+    private Set<Stock> stocks;
     @OneToMany(mappedBy = "shippedfrom")
-    Set<Order> orders;
+    private Set<Order> orders;
     @OneToMany(mappedBy = "locationrevenue")
-    Set<Revenue> revenues;
+    private Set<Revenue> revenues;
 }

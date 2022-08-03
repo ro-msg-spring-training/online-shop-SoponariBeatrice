@@ -1,5 +1,6 @@
 package ro.msg.learning.shop.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.msg.learning.shop.exception.NoSuchCategoryExistsException;
@@ -13,13 +14,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ProductService implements IProductService{
-    @Autowired
-    ProductRepository repository;
-    @Autowired
-    ProductCategoryRepository repositoryCategory;
-    @Autowired
-    SupplierRepository repositorySupplier;
+    private final ProductRepository repository;
+    private final ProductCategoryRepository repositoryCategory;
+    private final SupplierRepository repositorySupplier;
     @Override
     public Product saveProduct(Product product) {
         if(!repositoryCategory.findById(product.getCategory().getId()).isPresent())
@@ -39,8 +38,8 @@ public class ProductService implements IProductService{
     }
 
     @Override
-    public Optional<Product> updateProduct(Product product) {
-       return repository.findById(product.getId()).map(updatedProduct -> {
+    public Optional<Product> updateProduct(Integer id, Product product) {
+       return repository.findById(id).map(updatedProduct -> {
            updatedProduct.setId(product.getId());
            updatedProduct.setName(product.getName());
            updatedProduct.setCategory(product.getCategory());

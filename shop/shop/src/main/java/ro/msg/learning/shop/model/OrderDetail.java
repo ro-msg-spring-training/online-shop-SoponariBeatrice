@@ -16,9 +16,9 @@ public class OrderDetail{
     @Id
     private Integer productid;
     @ManyToOne
-    Product productorder;
+    private Product productorder;
     @ManyToOne
-    Order order;
+    private Order order;
 
-    Integer quantity;
+    private Integer quantity;
 }

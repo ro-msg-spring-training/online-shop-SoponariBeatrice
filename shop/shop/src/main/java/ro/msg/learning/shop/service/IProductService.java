@@ -9,7 +9,7 @@ public interface IProductService {
 
     List<Product> getProducts();
 
-    Optional<Product> updateProduct(Product product);
+    Optional<Product> updateProduct(Integer id, Product product);
 
     void deleteProduct(Integer id);
 

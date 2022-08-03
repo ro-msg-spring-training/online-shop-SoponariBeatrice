@@ -13,9 +13,9 @@ import java.util.Set;
 @Entity
 @NoArgsConstructor
 public class Supplier extends BaseEntity{
-    String name;
+    private String name;
     @OneToMany(mappedBy = "supplier")
-    Set<Product> products;
+    private Set<Product> products;
 
     public Supplier(String name) {
         this.name = name;

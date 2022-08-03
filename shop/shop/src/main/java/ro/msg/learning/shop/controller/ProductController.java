@@ -1,7 +1,7 @@
 package ro.msg.learning.shop.controller;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import ro.msg.learning.shop.Mapper;
-import org.springframework.stereotype.Controller;
+import ro.msg.learning.shop.mapper.Mapper;
 import org.springframework.web.bind.annotation.*;
 import ro.msg.learning.shop.dto.ProductDto;
 import ro.msg.learning.shop.model.Product;
@@ -9,15 +9,14 @@ import ro.msg.learning.shop.service.IProductService;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/products")
+@RequiredArgsConstructor
 public class ProductController {
-    @Autowired
-    IProductService service;
-    private Mapper mapper = new Mapper();
-    @PostMapping("/add-product")
+    private final IProductService service;
+    private final Mapper mapper;
+    @PostMapping("/products")
     @ResponseBody
     public Product saveProduct(@RequestBody ProductDto productDto)
     {
@@ -25,30 +24,30 @@ public class ProductController {
         return service.saveProduct(product);
     }
 
-    @GetMapping("/get-products")
+    @GetMapping("/products")
     @ResponseBody
     public List<ProductDto> getProducts()
     {
         return service.getProducts().stream().map(mapper::toDto).toList();
     }
 
-    @DeleteMapping("/delete-product/{id}")
+    @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable Integer id)
     {
         service.deleteProduct(id);
     }
 
-    @GetMapping("/get-by-id/{id}")
+    @GetMapping("/{id}")
     public Optional<ProductDto> getProductById(@PathVariable Integer id)
     {
-        return service.findById(id).map(product -> mapper.toDto(product));
+        return service.findById(id).map(mapper::toDto);
     }
 
-    @PutMapping("/update-product")
+    @PutMapping("/{id}")
     @ResponseBody
-    public Optional<ProductDto> updateProduct(@RequestBody ProductDto productDto)
+    public Optional<ProductDto> updateProduct(@PathVariable Integer id, @RequestBody ProductDto productDto)
     {
-        return service.updateProduct(mapper.toProduct(productDto)).map(product -> mapper.toDto(product));
+        return service.updateProduct(id,mapper.toProduct(productDto)).map(mapper::toDto);
     }
 
 }

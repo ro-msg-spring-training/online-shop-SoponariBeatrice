@@ -9,11 +9,11 @@ import java.util.Set;
 @Entity
 @Data
 public class Customer extends BaseEntity{
-    String firstName;
-    String lastName;
-    String username;
-    String password;
-    String email;
+    private String firstName;
+    private String lastName;
+    private String username;
+    private String password;
+    private String email;
     @OneToMany(mappedBy = "customer")
-    Set<Order> orders;
+    private Set<Order> orders;
 }
