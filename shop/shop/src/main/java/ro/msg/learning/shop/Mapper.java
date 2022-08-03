@@ -1,18 +1,17 @@
 package ro.msg.learning.shop;
 
 import org.springframework.stereotype.Component;
-import ro.msg.learning.shop.dto.ProductCategoryDto;
-import ro.msg.learning.shop.dto.ProductDto;
-import ro.msg.learning.shop.dto.SupplierDto;
-import ro.msg.learning.shop.model.Product;
-import ro.msg.learning.shop.model.ProductCategory;
-import ro.msg.learning.shop.model.Supplier;
+import ro.msg.learning.shop.dto.*;
+import ro.msg.learning.shop.model.*;
+
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public
 class Mapper {
-    public ProductDto toDto(Product product) {
+    public ProductDto toProductDto(Product product) {
         String name = product.getName();
         Integer id = product.getId();
         Integer categoryId = product.getCategory().getId();
@@ -40,4 +39,11 @@ class Mapper {
         product.setId(productDto.getId());
         return product;
     }
+
+   public OrderE toOrder(OrderDto orderDto)
+   {
+        return new OrderE(orderDto.getCreatedAt(), orderDto.getCity(), orderDto.getCountry(), orderDto.getStreet());
+
+   }
+
 }

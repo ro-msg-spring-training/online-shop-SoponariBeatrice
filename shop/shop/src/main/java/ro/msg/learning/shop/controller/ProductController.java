@@ -29,7 +29,7 @@ public class ProductController {
     @ResponseBody
     public List<ProductDto> getProducts()
     {
-        return service.getProducts().stream().map(mapper::toDto).toList();
+        return service.getProducts().stream().map(mapper::toProductDto).toList();
     }
 
     @DeleteMapping("/delete-product/{id}")
@@ -41,14 +41,14 @@ public class ProductController {
     @GetMapping("/get-by-id/{id}")
     public Optional<ProductDto> getProductById(@PathVariable Integer id)
     {
-        return service.findById(id).map(product -> mapper.toDto(product));
+        return service.findById(id).map(product -> mapper.toProductDto(product));
     }
 
     @PutMapping("/update-product")
     @ResponseBody
     public Optional<ProductDto> updateProduct(@RequestBody ProductDto productDto)
     {
-        return service.updateProduct(mapper.toProduct(productDto)).map(product -> mapper.toDto(product));
+        return service.updateProduct(mapper.toProduct(productDto)).map(product -> mapper.toProductDto(product));
     }
 
 }
