@@ -11,10 +11,10 @@ import java.util.Set;
 @Data
 public class Order extends BaseEntity{
     @ManyToOne
-    private Location shippedfrom;
+    Location shippedfrom;
     @ManyToOne
-    private Customer customer;
+    Customer customer;
 
     @OneToMany(mappedBy = "order")
-    private Set<OrderDetail> orderDetails;
+    Set<OrderDetail> orderDetails;
 }

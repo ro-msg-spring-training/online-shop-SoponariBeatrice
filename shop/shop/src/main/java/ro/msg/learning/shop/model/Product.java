@@ -1,8 +1,6 @@
 package ro.msg.learning.shop.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jdk.jfr.Category;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import ro.msg.learning.shop.dto.ProductDto;
 
 import javax.persistence.*;
@@ -11,8 +9,11 @@ import java.util.Set;
 
 @Entity
 @Data
-@Table(name="Product")
+@EqualsAndHashCode(exclude = "category")
+@ToString(exclude = {"stocks", "orderDetails"})
 @NoArgsConstructor
+@AllArgsConstructor
+@Table(name="PRODUCT")
 public class Product extends BaseEntity {
     private String name;
     private String description;
@@ -41,9 +42,9 @@ public class Product extends BaseEntity {
         this.category = category;
         this.supplier = supplier;
         this.imageUrl = imageUrl;
-        this.stocks = stocks;
-        this.orderDetails = orderDetails;
+
     }
+
     public Product(ProductDto productDto, ProductCategory category, Supplier supplier)
     {
         this.name = productDto.getName();
