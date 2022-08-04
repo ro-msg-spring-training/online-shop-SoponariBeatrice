@@ -1,6 +1,8 @@
 package ro.msg.learning.shop.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,17 +11,29 @@ import java.util.Set;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Customer extends BaseEntity{
     @Column(name = "FIRSTNAME")
-    String firstName;
+    private String firstName;
     @Column(name = "LASTNAME")
-    String lastName;
+    private String lastName;
     @Column(name = "USERNAME")
-    String username;
+    private String username;
     @Column(name = "PASSWORD")
-    String password;
+    private String password;
     @Column(name = "EMAIL")
-    String email;
+    private String email;
     @OneToMany(mappedBy = "customer")
-    Set<OrderE> orders;
+    private Set<OrderE> orders;
+
+    public Customer(String firstName, String lastName, String username, String  password, String email)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+
+    }
 }

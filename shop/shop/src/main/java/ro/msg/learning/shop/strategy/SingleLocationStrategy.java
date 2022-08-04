@@ -1,5 +1,4 @@
 package ro.msg.learning.shop.strategy;
-
 import ro.msg.learning.shop.exception.StrategyNotApplicableException;
 import ro.msg.learning.shop.model.*;
 
@@ -32,7 +31,6 @@ public class SingleLocationStrategy implements IStrategy{
         if(flag)
         {
 
-           System.out.println(location.getCity());
            List<ProductLocationQuantity> productLocationQuantity = new ArrayList<>();
            for (OrderDetail o : orderDetails
            ) {

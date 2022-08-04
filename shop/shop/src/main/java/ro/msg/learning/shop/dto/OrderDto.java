@@ -10,11 +10,11 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class OrderDto {
-    Integer id;
-    Timestamp createdAt;
-    String city;
-    String country;
-    String street;
-    List<QuantityIdProduct> products;
+    private Integer id;
+    private Timestamp createdAt;
+    private String city;
+    private String country;
+    private String street;
+    private List<QuantityIdProduct> products;
 
 }

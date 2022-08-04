@@ -1,6 +1,8 @@
 package ro.msg.learning.shop.model;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 @Data
@@ -8,6 +10,8 @@ import javax.persistence.*;
 @Table(name="Stock")
 @IdClass(StockId.class)
 @EqualsAndHashCode(exclude = "product")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Stock{
     @Id
     private Integer productid;

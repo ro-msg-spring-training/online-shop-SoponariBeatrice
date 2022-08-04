@@ -1,16 +1,17 @@
-package ro.msg.learning.shop;
+package ro.msg.learning.shop.mapper;
 
 import org.springframework.stereotype.Component;
-import ro.msg.learning.shop.dto.*;
-import ro.msg.learning.shop.model.*;
+import ro.msg.learning.shop.dto.ProductCategoryDto;
+import ro.msg.learning.shop.dto.ProductDto;
+import ro.msg.learning.shop.dto.SupplierDto;
+import ro.msg.learning.shop.model.Product;
+import ro.msg.learning.shop.model.ProductCategory;
+import ro.msg.learning.shop.model.Supplier;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
-public
-class Mapper {
+public class ProductMapper {
     public ProductDto toProductDto(Product product) {
         String name = product.getName();
         Integer id = product.getId();
@@ -19,9 +20,6 @@ class Mapper {
         String description = product.getDescription();
         BigDecimal price = product.getPrice();
         Double weight = product.getWeight();
-        String categoryName = product.getCategory().getName();
-        String categoryDescription = product.getCategory().getDescription();
-        String supplierName = product.getSupplier().getName();
         String imageUrl = product.getImageUrl();
         ProductCategoryDto categoryDto = new ProductCategoryDto(categoryId, product.getCategory().getName(), product.getCategory().getDescription());
         SupplierDto supplierDto = new SupplierDto(supplierId, product.getSupplier().getName());
@@ -39,11 +37,5 @@ class Mapper {
         product.setId(productDto.getId());
         return product;
     }
-
-   public OrderE toOrder(OrderDto orderDto)
-   {
-        return new OrderE(orderDto.getCreatedAt(), orderDto.getCity(), orderDto.getCountry(), orderDto.getStreet());
-
-   }
 
 }

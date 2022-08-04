@@ -1,5 +1,6 @@
 package ro.msg.learning.shop.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @IdClass(OrderDetailId.class)
 @NoArgsConstructor
 @Table(name = "ORDERDETAILS")
+@AllArgsConstructor
 public class OrderDetail{
     @Id
     private Integer orderid;

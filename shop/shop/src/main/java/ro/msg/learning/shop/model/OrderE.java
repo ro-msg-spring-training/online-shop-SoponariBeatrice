@@ -1,6 +1,7 @@
 package ro.msg.learning.shop.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import java.util.Set;
 @Data
 @Table(name="OrderT")
 @ToString(exclude = "orderDetails")
+@NoArgsConstructor
 public class OrderE extends BaseEntity{
     @ManyToOne
     @JoinColumn(name="shippedfrom")
@@ -34,9 +36,12 @@ public class OrderE extends BaseEntity{
         this.country = country;
         this.street = street;
     }
-
-    public OrderE() {
-
+    public OrderE(Timestamp createdAt, String city, String country, String street, Customer customer) {
+        this.createdat= createdAt;
+        this.city = city;
+        this.country = country;
+        this.street = street;
+        this.customer = customer;
     }
 
 }

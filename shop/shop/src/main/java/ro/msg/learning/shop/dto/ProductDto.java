@@ -9,16 +9,16 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDto {
-    Integer id;
-    Integer categoryId;
-    Integer supplierId;
-    String name;
-    String description;
-    BigDecimal price;
-    Double weight;
-    ProductCategoryDto category;
-    SupplierDto supplier;
-    String imageUrl;
+    private Integer id;
+    private Integer categoryId;
+    private Integer supplierId;
+    private String name;
+    private String description;
+    private BigDecimal price;
+    private Double weight;
+    private ProductCategoryDto category;
+    private SupplierDto supplier;
+    private String imageUrl;
 
 
 }

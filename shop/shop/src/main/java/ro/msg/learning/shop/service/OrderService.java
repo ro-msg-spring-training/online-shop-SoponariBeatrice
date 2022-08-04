@@ -1,28 +1,22 @@
 package ro.msg.learning.shop.service;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ro.msg.learning.shop.exception.StrategyNotApplicableException;
 import ro.msg.learning.shop.model.*;
 import ro.msg.learning.shop.repository.OrderRepository;
 import ro.msg.learning.shop.repository.ProductRepository;
 import ro.msg.learning.shop.strategy.StrategyContext;
-
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class OrderService implements IOrderService{
-    @Autowired
-    OrderRepository repository;
-    @Autowired
-    ProductRepository productRepository;
 
-    @Autowired
-    StockService stockService;
-    @Autowired
-    StrategyContext strategyContext;
+    private final OrderRepository repository;
+    private final ProductRepository productRepository;
+    private final StrategyContext strategyContext;
+
     public List<OrderDetail> createOrderDetailList(OrderE order, List<QuantityIdProduct> quantityIdProducts)
     {
         List<OrderDetail> orderDetails = new ArrayList<>();

@@ -2,6 +2,7 @@ package ro.msg.learning.shop.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import java.util.Set;
 @Data
 @Entity
 @EqualsAndHashCode(exclude = "stocks")
+@NoArgsConstructor
 @ToString(exclude = {"stocks","orders", "revenues"})
 public class Location extends BaseEntity{
     private String name;
@@ -24,4 +26,12 @@ public class Location extends BaseEntity{
     private Set<OrderE> orders;
     @OneToMany(mappedBy = "locationrevenue")
     private Set<Revenue> revenues;
+
+    public Location(String name, String country, String city, String county, String street) {
+        this.name = name;
+        this.country = country;
+        this.city = city;
+        this.county = county;
+        this.street = street;
+    }
 }
